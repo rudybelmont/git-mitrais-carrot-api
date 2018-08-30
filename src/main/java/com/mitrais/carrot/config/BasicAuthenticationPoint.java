@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 
- * @author febri
+ * @author rudy@mitrais.com
  */
 @Component
 public class BasicAuthenticationPoint extends BasicAuthenticationEntryPoint {

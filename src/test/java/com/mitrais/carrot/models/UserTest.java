@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author febri
+ * @author rudy@mitrais.com
  */
 public class UserTest {
     

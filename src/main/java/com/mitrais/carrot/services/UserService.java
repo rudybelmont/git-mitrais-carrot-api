@@ -4,7 +4,7 @@ import com.mitrais.carrot.models.User;
 
 /**
  *
- * @author Febri_MW251
+ * @author rudy@mitrais.com_MW251
  */
 public interface UserService {
 

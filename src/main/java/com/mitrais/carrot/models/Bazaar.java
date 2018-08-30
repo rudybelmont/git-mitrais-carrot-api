@@ -47,14 +47,14 @@ public class Bazaar implements Serializable {
     protected Date createdTime;
 
     @Column(name = "created_by")
-    protected Integer createdBy;
+    protected String createdBy;
 
     @Column(name = "last_modified_time")
     @Temporal(javax.persistence.TemporalType.DATE)
     protected Date lastModifiedTime;
 
     @Column(name = "last_modified_by")
-    protected Integer lastModifiedBy;
+    protected String lastModifiedBy;
 
     public Integer getId() {
         return id;
@@ -120,11 +120,11 @@ public class Bazaar implements Serializable {
         this.createdTime = createdTime;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -136,11 +136,11 @@ public class Bazaar implements Serializable {
         this.lastModifiedTime = lastModifiedTime;
     }
 
-    public Integer getLastModifiedBy() {
+    public String getLastModifiedBy(){
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(Integer lastModifiedBy) {
+    public void setLastModifiedBy(String lastModifiedBy){
         this.lastModifiedBy = lastModifiedBy;
     }
 

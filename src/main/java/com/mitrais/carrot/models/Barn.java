@@ -52,14 +52,14 @@ public class Barn implements Serializable {
     private Date createdTime;
 
     @Column(name = "created_by")
-    private Integer createdBy;
+    private String createdBy;
 
     @Column(name = "last_modified_time")
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date lastModifiedTime;
 
     @Column(name = "last_modified_by")
-    private Integer lastModifiedBy;
+    private String lastModifiedBy;
 
     public Integer getId() {
         return id;
@@ -149,11 +149,11 @@ public class Barn implements Serializable {
         this.createdTime = createdTime;
     }
 
-    public Integer getCreatedBy() {
+    public String getCreatedBy(){
         return createdBy;
     }
 
-    public void setCreatedBy(Integer createdBy) {
+    public void setCreatedBy(String createdBy){
         this.createdBy = createdBy;
     }
 
@@ -165,11 +165,11 @@ public class Barn implements Serializable {
         this.lastModifiedTime = lastModifiedTime;
     }
 
-    public Integer getLastModifiedBy() {
+    public String getLastModifiedBy(){
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(Integer lastModifiedBy) {
+    public void setLastModifiedBy(String lastModifiedBy){
         this.lastModifiedBy = lastModifiedBy;
     }
 

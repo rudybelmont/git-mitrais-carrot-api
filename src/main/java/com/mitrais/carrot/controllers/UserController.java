@@ -51,16 +51,25 @@ public class UserController {
     @PutMapping("/users/{id}")
     public User update(@PathVariable Integer id, @RequestBody User body) {
         Optional<User> user = userRepository.findById(id);
-        User u = user.get();
-        body.setId(u.getId());
-        body.setLastModifiedTime(new Date());
-        return userRepository.save(body);
+        
+        if(user.isPresent()) {
+        	User u = user.get();
+        	body.setId(u.getId());
+            body.setLastModifiedTime(new Date());
+            return userRepository.save(body);
+       }
+        else {
+        	return body;
+        }
     }
 
     @DeleteMapping("/users/{id}")
     public String delete(@PathVariable Integer id) {
         Optional<User> sl = userRepository.findById(id);
-        userRepository.delete(sl.get());
+        
+        if(sl.isPresent()) {
+        	 userRepository.delete(sl.get());
+        }
         return "";
     }
 }
