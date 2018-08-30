@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 @CrossOrigin
 @RestController

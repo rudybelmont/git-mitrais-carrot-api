@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebSecurity
 public class ApplicationConfig extends WebSecurityConfigurerAdapter {
 
-    public static final String REALM_NAME = "cakpep";
+    public static final String REALM_NAME = "rudy";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,7 +35,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("cakpep").password("{noop}dev").roles("USER")
+                .withUser("dev").password("{noop}dev").roles("USER")
                 .and()
                 .withUser("prod").password("{noop}live").roles("MANAGER");
     }

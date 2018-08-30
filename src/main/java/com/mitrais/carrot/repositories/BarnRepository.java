@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 public interface BarnRepository extends CrudRepository<Barn, Integer> {
 
