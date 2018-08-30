@@ -6,8 +6,10 @@
 
 ``` bash
 # clone the repo
+# master
 $ git clone https://bitbucket.org/cakpep/mitrais-carrot-api.git
-$ git clone https://trello.com/c/ff2WSH3R/1-jamie-definition-of-done
+# personal
+$ git clone https://github.com/rudybelmont/git-mitrais-carrot-api.git
 
 # go into app's directory
 $ cd mitrais-carrot-api

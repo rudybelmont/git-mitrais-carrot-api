@@ -3,7 +3,7 @@ package com.mitrais.carrot.config;
 /**
  * main app config
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 public class Config {
 

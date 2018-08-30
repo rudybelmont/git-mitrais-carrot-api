@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 @Entity
 @Table(name = "barn_setting")

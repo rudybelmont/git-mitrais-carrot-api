@@ -10,7 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 @Configuration
 @EnableSwagger2

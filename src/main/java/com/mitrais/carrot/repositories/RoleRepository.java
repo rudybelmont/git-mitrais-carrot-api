@@ -2,7 +2,7 @@ package com.mitrais.carrot.repositories;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 import com.mitrais.carrot.models.Role;
 import org.springframework.data.jpa.repository.JpaRepository;

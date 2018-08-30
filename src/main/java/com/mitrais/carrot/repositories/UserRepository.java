@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Integer> {

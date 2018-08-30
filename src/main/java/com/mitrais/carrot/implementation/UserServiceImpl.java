@@ -2,7 +2,7 @@ package com.mitrais.carrot.implementation;
 
 /**
  *
- * @author Febri_MW251@mitrais.com
+ * @author rudy@mitrais.com
  */
 import java.util.Arrays;
 import java.util.HashSet;
