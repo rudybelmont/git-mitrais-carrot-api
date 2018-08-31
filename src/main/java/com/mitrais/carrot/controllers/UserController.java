@@ -6,6 +6,8 @@ import com.mitrais.carrot.repositories.UserRepository;
 import com.mitrais.carrot.services.UserService;
 import java.util.Date;
 import java.util.Optional;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -39,7 +41,7 @@ public class UserController {
 
     @PostMapping("/users")
     public User save(@RequestBody User body) {
-//        body.setCreatedTime(new Date());
+        body.setCreatedTime(new Date());
         return userRepository.save(body);
     }
 
@@ -54,22 +56,46 @@ public class UserController {
         
         if(user.isPresent()) {
         	User u = user.get();
-        	body.setId(u.getId());
-            body.setLastModifiedTime(new Date());
+        	
+        	 BeanUtils.copyProperties(body, u);
+             u.setId(id);
             return userRepository.save(body);
        }
         else {
         	return body;
         }
     }
+    
+    @PutMapping("/delete/users/{id}")
+    public User deleteUser(@PathVariable Integer id) {
+        Optional<User> model = userRepository.findById(id);
+        
+        if(model.isPresent()) {
+        	User u = model.get();
+        	u.setIsDeteled(1);
+            return userRepository.save(u);
+       }
+        else {
+        	return model.get();
+        }
+    }
 
     @DeleteMapping("/users/{id}")
-    public String delete(@PathVariable Integer id) {
-        Optional<User> sl = userRepository.findById(id);
+    public boolean delete(@PathVariable Integer id) {
+        Optional<User> model = userRepository.findById(id);
         
-        if(sl.isPresent()) {
-        	 userRepository.delete(sl.get());
+        if(model.isPresent() ) {
+            User u = model.get();
+            if(u.getIsDeteled() == 1) {
+                userRepository.delete(u);
+       	 	return true; 
+            }
+        	else {
+                return false;
+            }
         }
-        return "";
+        else {
+        	return false;	
+        }
     }
 }

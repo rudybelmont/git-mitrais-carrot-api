@@ -5,6 +5,8 @@ import com.mitrais.carrot.models.Barn;
 import com.mitrais.carrot.repositories.BarnRepository;
 import java.util.Optional;
 import javax.validation.Valid;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,15 +45,43 @@ public class BarnController {
     @ResponseBody
     public Barn update(@PathVariable Integer id, @Valid @RequestBody Barn body) {
         Optional<Barn> model = barnRepository.findById(id);
-        Barn sl = model.get();
-        return barnRepository.save(sl);
+        Barn barn = model.get();
+        BeanUtils.copyProperties(body, barn);
+        barn.setId(id);
+        return barnRepository.save(barn);
+    }
+    
+    @PutMapping("/delete/barns/{id}")
+    public Barn deleteUser(@PathVariable Integer id) {
+        Optional<Barn> model = barnRepository.findById(id);
+        
+        if(model.isPresent()) {
+        	Barn b = model.get();
+        	b.setIsDeteled(1);
+            return barnRepository.save(b);
+       }
+        else {
+        	return model.get();
+        }
     }
 
     @DeleteMapping("/barns/{id}")
     @ResponseBody
-    public String delete(@PathVariable Integer id) {
-        Optional<Barn> sl = barnRepository.findById(id);
-        barnRepository.delete(sl.get());
-        return "";
+    public boolean delete(@PathVariable Integer id) {
+        Optional<Barn> model = barnRepository.findById(id);
+
+        if(model.isPresent() ) {
+        	Barn b = model.get();
+            if(b.getIsDeteled() == 1) {
+            	barnRepository.delete(b);
+       	 	return true; 
+            }
+        	else {
+                return false;
+            }
+        }
+        else {
+        	return false;	
+        }
     }
 }

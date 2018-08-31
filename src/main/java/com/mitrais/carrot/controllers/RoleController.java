@@ -43,15 +43,45 @@ public class RoleController {
     @ResponseBody
     public Role update(@PathVariable Integer id, @Valid @RequestBody Role body) {
         Optional<Role> model = roleRepository.findById(id);
-        Role sl = model.get();
-        return roleRepository.save(sl);
+        Role role = model.get();
+        role.setRoleName(body.getRoleName());
+        role.setIsDeteled(body.getIsDeteled());
+        return roleRepository.save(role);
+    }
+    
+    @PutMapping("/delete/roles/{id}")
+    public Role deleteRole(@PathVariable Integer id) {
+        Optional<Role> model = roleRepository.findById(id);
+        
+        if(model.isPresent()) {
+        	Role r = model.get();
+        	r.setIsDeteled(1);
+            return roleRepository.save(r);
+        }
+        else {
+        	return model.get();
+        }
+        
     }
 
     @DeleteMapping("/roles/{id}")
     @ResponseBody
-    public String delete(@PathVariable Integer id) {
-        Optional<Role> sl = roleRepository.findById(id);
-        roleRepository.delete(sl.get());
-        return "";
+    public boolean delete(@PathVariable Integer id) {
+        Optional<Role> model = roleRepository.findById(id);
+        
+        if(model.isPresent() ) {
+        	Role r = model.get();
+            if(r.getIsDeteled() == 1) {
+            	roleRepository.delete(r);
+       	 	return true; 
+            }
+        	else {
+                return false;
+            }
+        }
+        else {
+        	return false;	
+        }
+
     }
 }
